@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./navbar-menu";
-import { cn } from "./cn";
+import { cn } from "../utils/cn";
 
 export default function Newnavbar() {
   return (

@@ -12,6 +12,8 @@ import HotelIcon from '@mui/icons-material/Hotel';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import Typography from '@mui/material/Typography';
 
+import { Card } from './card';
+
 export default function CustomizedTimeline() {
   return (
     <Timeline position="alternate">
@@ -32,9 +34,8 @@ export default function CustomizedTimeline() {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 }}>
-          <Typography variant="h6" component="span">
-            Eat
-          </Typography>
+
+
           <Typography>Because you need strength</Typography>
         </TimelineContent>
       </TimelineItem>
@@ -54,9 +55,8 @@ export default function CustomizedTimeline() {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 }}>
-          <Typography variant="h6" component="span">
-            Code
-          </Typography>
+
+
           <Typography>Because it&apos;s awesome!</Typography>
         </TimelineContent>
       </TimelineItem>
