@@ -20,15 +20,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Newnavbar />
-        
-        <WavyBackground className="max-w-4xl fixed z-0" />
-          <div className="mt-20 z-50">
 
+        
+          <WavyBackground className="" >
+          <div className=" inset-0 overscroll-contain z-50 mt-10">
 
             {children}
 
           </div>
-        
+        </WavyBackground>
       </body>
     </html>
   );

@@ -104,27 +104,29 @@ export const WavyBackground = ({
     // I'm sorry but i have got to support it on safari.
     setIsSafari(
       typeof window !== "undefined" &&
-        navigator.userAgent.includes("Safari") &&
-        !navigator.userAgent.includes("Chrome")
+      navigator.userAgent.includes("Safari") &&
+      !navigator.userAgent.includes("Chrome")
     );
   }, []);
 
   return (
     <div
       className={cn(
-        "h-screen fixed flex-col items-center justify-center",
+        "h-screen relative flex-col items-center justify-center z-0",
         containerClassName
       )}
     >
       <canvas
-        className="absolute inset-0 z-0"
+        className="fixed inset-0 z-0"
         ref={canvasRef}
         id="canvas"
         style={{
           ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
         }}
-      ></canvas>
-      <div className={cn("relative z-10", className)} {...props}>
+      >
+
+      </canvas>
+      <div className={cn("relative z-10 inset-0 ", className)} {...props}>
         {children}
       </div>
     </div>
