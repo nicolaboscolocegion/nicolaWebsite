@@ -1,3 +1,4 @@
+"use client";
 import * as React from 'react';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -11,12 +12,14 @@ import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import HotelIcon from '@mui/icons-material/Hotel';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import Typography from '@mui/material/Typography';
-
+import "../globals.css";
 import { Card } from './card';
+import { CenterFocusStrong } from '@mui/icons-material';
 
 export default function CustomizedTimeline() {
   return (
-    <Timeline position="alternate">
+
+    <Timeline position="alternate" >
       <TimelineItem>
         <TimelineOppositeContent
           sx={{ m: 'auto 0' }}
@@ -33,15 +36,17 @@ export default function CustomizedTimeline() {
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent sx={{ py: '12px', px: 2 }}>
+        <TimelineContent sx={{ py: '12px', px: 2 }} >
+
+          <Card title='titolo' description='descrizione molto lunga' link='https://www.google.com' img='/kirby.png' />
 
 
-          <Typography>Because you need strength</Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent
           sx={{ m: 'auto 0' }}
+
           variant="body2"
           color="text.secondary"
         >
@@ -54,10 +59,11 @@ export default function CustomizedTimeline() {
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent sx={{ py: '12px', px: 2 }}>
+        <TimelineContent sx={{ py: '12px', px: 2 }} className='relative ' id='ciao2' >
+
+          <Card title='titolo' description='descrizione molto lunga' link='https://www.google.com' img='/kirby.png' />
 
 
-          <Typography>Because it&apos;s awesome!</Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -91,5 +97,6 @@ export default function CustomizedTimeline() {
         </TimelineContent>
       </TimelineItem>
     </Timeline>
+
   );
 }

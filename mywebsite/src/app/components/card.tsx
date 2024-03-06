@@ -1,53 +1,44 @@
 "use client";
-
-import Image from "next/image";
 import React from "react";
-import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
+import { BackgroundGradient } from "../ui/background-gradient";
+import Image from "next/image";
 
-type Props ={
-  img : string;
-  title : string;
-  description : string;
-  link : string;
+
+type Props = {
+  img: string;
+  title: string;
+  description: string;
+  link: string;
 
 }
 
 export function Card(props: Props) {
   return (
-    <CardContainer className="inter-var">
-      <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
-        <CardItem
-          translateZ="50"
-          className="text-xl font-bold text-neutral-600 dark:text-white"
-        >
+    <div className="w-fit m-auto static " id='ciao'>
+      <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900   ">
+        <Image
+          src={props.img}
+          alt="jordans"
+          height="400"
+          width="400"
+          className="object-contain"
+        />
+        <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
           {props.title}
-        </CardItem>
-        <CardItem
-          as="p"
-          translateZ="60"
-          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-        >
+        </p>
+
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {props.description}
-        </CardItem>
-        <CardItem translateZ="100" className="w-full mt-4">
-          <Image
-            src=""
-            height="1000"
-            width="1000"
-            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-            alt="thumbnail"
-          />
-        </CardItem>
-        <div className="flex justify-between items-center mt-20">
-          <CardItem
-            translateZ={20}
-            as="button"
-            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
-          >
-            Go
-          </CardItem>
-        </div>
-      </CardBody>
-    </CardContainer>
+        </p>
+
+
+        <button className="p-[3px] relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+          <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+            Lit up borders
+          </div>
+        </button>
+      </BackgroundGradient>
+    </div>
   );
 }
