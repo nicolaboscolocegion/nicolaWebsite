@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Newnavbar from "./components/navbar";
+import { WavyBackground } from "./ui/wavy-background"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Newnavbar />
-        <div className="mt-20">
-          {children}
-        </div>
+        
+        <WavyBackground className="max-w-4xl fixed z-0" />
+          <div className="mt-20 z-50">
+
+
+            {children}
+
+          </div>
+        
       </body>
     </html>
   );
