@@ -7,22 +7,22 @@ const supabase = createClient('http://localhost:8000', 'eyJhbGciOiJIUzI1NiIsInR5
 
 export async function GET(req: NextRequest) {
 
-    const url = new URL(req.url);
+  const url = new URL(req.url);
 
-    //res.status(200).json({ message: 'Hello from Next.js!' })
-    try {
-        // Fetch data from Supabase
-        const { data: education, error } = await supabase
-            .from('education')
-            .select('*') // Or select specific columns
+  //res.status(200).json({ message: 'Hello from Next.js!' })
+  try {
+    // Fetch data from Supabase
+    const { data: education, error } = await supabase
+      .from('education')
+      .select('*') // Or select specific columns
 
-        if (error) {
-            throw error;
-        }
-
-        return NextResponse.json(education, { status: 200 });
-    } catch (error) {
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    if (error) {
+      throw error;
     }
+
+    return NextResponse.json(education, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
 
 }
