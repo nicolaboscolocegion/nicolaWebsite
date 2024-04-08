@@ -52,9 +52,9 @@ function Navbar({ className }: { className?: string }) {
         </MenuItem>
         <MenuItem setActive={setActive} active={active} link='/timeline' item="Timeline">
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} link='' item="Education">
+        <MenuItem setActive={setActive} active={active} link='/education' item="Education">
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} link='' item="Jobs">
+        <MenuItem setActive={setActive} active={active} link='/jobs' item="Jobs">
         </MenuItem>
         <MenuItem setActive={setActive} active={active} link='' item="Projects">
         </MenuItem>
