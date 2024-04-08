@@ -22,7 +22,7 @@ export const BackgroundGradient = ({
     },
   };
   return (
-    <div className={cn("relative p-[4px] group", containerClassName)}>
+    <div className={cn("relative w-fit p-[4px] group", containerClassName)}>
       <motion.div
         variants={animate ? variants : undefined}
         initial={animate ? "initial" : undefined}
@@ -30,10 +30,10 @@ export const BackgroundGradient = ({
         transition={
           animate
             ? {
-                duration: 5,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }
+              duration: 5,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }
             : undefined
         }
         style={{
@@ -51,10 +51,10 @@ export const BackgroundGradient = ({
         transition={
           animate
             ? {
-                duration: 5,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }
+              duration: 5,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }
             : undefined
         }
         style={{
