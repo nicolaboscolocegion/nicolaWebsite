@@ -1,9 +1,7 @@
 "use server";
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js'
-const supabase = createClient('http://localhost:8000', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE')
-
+import {supabase} from '../key'
 
 export async function GET(req: NextRequest) {
 
@@ -12,7 +10,7 @@ export async function GET(req: NextRequest) {
   //res.status(200).json({ message: 'Hello from Next.js!' })
   try {
     // Fetch data from Supabase
-    const { data: education, error } = await supabase
+    const { data: projects, error } = await supabase
       .from('projects')
       .select('*') // Or select specific columns
 
@@ -20,9 +18,8 @@ export async function GET(req: NextRequest) {
       throw error;
     }
 
-    return NextResponse.json(education, { status: 200 });
+    return NextResponse.json(projects, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 
 }
