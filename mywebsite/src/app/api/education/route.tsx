@@ -1,0 +1,24 @@
+"use server";
+import { NextRequest, NextResponse } from 'next/server';
+import {supabase} from '../key'
+
+export async function GET(req: NextRequest) {
+
+
+  //res.status(200).json({ message: 'Hello from Next.js!' })
+  try {
+    // Fetch data from Supabase
+    const { data: education, error } = await supabase
+      .from('education')
+      .select('*') // Or select specific columns
+
+    if (error) {
+      throw error;
+    }
+
+    return NextResponse.json(education, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+
+}
