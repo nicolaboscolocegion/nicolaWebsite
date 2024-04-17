@@ -40,5 +40,5 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            docker stop website
-            docker run 
+            cd website 
+            docker compose up -d 
