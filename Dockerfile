@@ -4,7 +4,7 @@ WORKDIR /website
 COPY ./mywebsite /website
 
 ENV PORT=3000
-ENV ANON_TOKEN = null
+ENV ANON_KEY = null
 ENV URL = localhost
 
 EXPOSE $PORT
