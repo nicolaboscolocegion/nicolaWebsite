@@ -17,8 +17,8 @@ export default async function Jobs() {
       <Grid container spacing={5} columns={{ sm: 2, md: 3, lg: 4, xl: 5 }}
         className='pt-5'
         direction="row"
-        justifyContent="space-around"
-        alignItems="flex-start">
+        justifyContent="center"
+        alignItems="center">
 
         {jobs.map((job: WorkContent, index: number) =>
           <Grid item xs={1} key={index} className='m-20'>

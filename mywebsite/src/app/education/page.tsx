@@ -15,11 +15,11 @@ export default async function Jobs() {
 
   return (
     <Box sx={{ width: '100%' }} className='pt-20 px-10'>
-      <Grid container spacing={5} columns={{ sm: 2, md: 3, lg: 4, xl: 5 }}
+      <Grid container spacing={5} columns={{ xs:1, sm: 2, md: 3, lg: 4, xl: 5 }}
         className='pt-5'
         direction="row"
         justifyContent="center"
-        alignItems="flex-start">
+        alignItems="center">
 
         {education.map((edu: WorkContent, index: number) =>
           <Grid item xs={1} key={index} className='m-20'>
