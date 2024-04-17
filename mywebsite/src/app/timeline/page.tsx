@@ -5,7 +5,7 @@ import { WorkContent, typeOfWOrk } from '../custom';
 
 export default async function TimelinePage() {
 
-  const eduRetrived: WorkContent[] = await fetch('http://localhost:3000/api/education', { next: { revalidate: 0 } }).then(response => response.json());
+  const eduRetrived: WorkContent[] = await fetch('http://localhost:3000/api/education', { next: { revalidate: 3600 } }).then(response => response.json());
   const edu: WorkContent[] = eduRetrived.map((retrived: WorkContent) => ({ ...retrived, type: typeOfWOrk.education }))
 
   const jobsRetrived = await fetch('http://localhost:3000/api/job', { next: { revalidate: 3600 } }).then(response => response.json());
