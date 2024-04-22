@@ -7,11 +7,18 @@ import Box from '@mui/material/Box';
 import { WorkContent } from '../custom';
 import { Card } from '../components/card';
 import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
+import { key } from '../api/key';
 
 
-export default async function Jobs() {
+export default async function Projects() {
 
-  const projects: WorkContent[] = await fetch('http://localhost:3000/api/project', { next: { revalidate: 3600 } }).then(response => response.json());
+  const projects: WorkContent[] = await fetch('https://api.nikbc.tech/rest/v1/projects?select=*', { 
+    next: { revalidate: 36000 } ,
+    headers: {
+      'apikey': key,
+      'Authorization' : `Bearer ${key}`
+  },
+  }).then(response => response.json());
 
   return (
     <Box sx={{ width: '100%' }} className='pt-20 px-10'>
