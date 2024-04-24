@@ -22,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="canonical" href="https://www.nikbc.tech" />
         <meta name="robots" content="all" />
         <title>Nicola Boscolo Cegion portfolio</title>
         <meta name="description" content="Nicola Boscolo Cegion protfolio with general information about contats, education, jobs and projecs" />
