@@ -21,6 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="robots" content="all" />
+        <title>Nicola Boscolo Cegion portfolio</title>
+        <meta name="description" content="Nicola Boscolo Cegion protfolio with general information about contats, education, jobs and projecs" />
+      </head>
       <body className={inter.className}>
         <AppRouterCacheProvider >
           <ThemeProvider theme={theme}>
