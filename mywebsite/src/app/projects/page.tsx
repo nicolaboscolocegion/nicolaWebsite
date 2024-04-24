@@ -13,7 +13,7 @@ import { key } from '../api/key';
 export default async function Projects() {
 
   const projects: WorkContent[] = await fetch('https://api.nikbc.tech/rest/v1/projects?select=*', { 
-    next: { revalidate: 36000 } ,
+    next: { revalidate: 3600 } ,
     headers: {
       'apikey': key,
       'Authorization' : `Bearer ${key}`
