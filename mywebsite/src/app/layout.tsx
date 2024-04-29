@@ -10,8 +10,9 @@ import { ThemeProvider } from '@mui/material/styles';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Nicola Boscolo",
-  description: "Portfolio of Nicola",
+  title: "Nicola Boscolo Cegion portfolio",
+  description: "Nicola Boscolo Cegion protfolio with general information about contats, education, jobs and projecs",
+  robots: "all",
 };
 
 export default function RootLayout({
@@ -23,9 +24,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="canonical" href="https://www.nikbc.tech" />
-        <meta name="robots" content="all" />
-        <title>Nicola Boscolo Cegion portfolio</title>
-        <meta name="description" content="Nicola Boscolo Cegion protfolio with general information about contats, education, jobs and projecs" />
       </head>
       <body className={inter.className}>
         <AppRouterCacheProvider >
