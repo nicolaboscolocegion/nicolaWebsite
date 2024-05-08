@@ -3,6 +3,8 @@ import Grid from "@mui/material/Grid";
 import Box from '@mui/material/Box';
 import { CardNoButton } from "./components/cardNoButton";
 import Links from "./components/links"
+import EmailIcon from '@mui/icons-material/Email';
+
 
 function getAge() {
   const birthDate: Date = new Date("1999-11-26")
@@ -24,7 +26,10 @@ function getAge() {
 const description: string = `Nationality: Italian
 Born in: Chioggia (VE)
 Birth: 26/11/1999
-Age: ${getAge()}`
+Age: ${getAge()}
+Email: nicolaboscolocegion@gmail.com 
+`
+
 
 export default function Home() {
   return (
