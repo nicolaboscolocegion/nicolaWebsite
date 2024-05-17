@@ -41,6 +41,7 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
   const works: WorkContent[] = varWorks;
   const theme = useTheme();
   const lessThanLG = useMediaQuery(theme.breakpoints.down("md"));
+  
 
   return (
     <>
@@ -66,12 +67,12 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
               >
                 <p className='text-base text-neutral-300 	'>
                   {
-                    "Started in: " + moment(work.startingDate, 'YYYY/MM/DD').month() + "/" + moment(work.startingDate, 'YYYY/MM/DD').year()
+                    "Started in: " + moment(work.startingDate, 'YYYY-MM-DD').format("MM") + "/" + moment(work.startingDate, 'YYYY-MM-DD').format("YYYY")
                   }
                   <br />
                   {
                     work.endDate != undefined ?
-                      "Ended in: " + moment(work.endDate, 'YYYY/MM/DD').month() + "/" + moment(work.endDate, 'YYYY/MM/DD').year() :
+                      "Ended in: " + moment(work.endDate, 'YYYY-MM-DD').format("MM") + "/" + moment(work.endDate, 'YYYY-MM-DD').format("YYYY") :
                       "Still in progress"
                   }
                 </p>
