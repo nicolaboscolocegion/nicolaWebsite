@@ -28,6 +28,9 @@ jobs:
         with:
           push: true
           tags: nicolaboscolo/mywebsite:beta
+          build-args: |
+            ANON_KEY=${{ secrets.ANON_KEY }}
+          
       -
         name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v1.0.3
