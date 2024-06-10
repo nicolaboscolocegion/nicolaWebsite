@@ -36,15 +36,15 @@ export default function Home() {
     <Box sx={{ width: '100%' }} className='pt-20 px-10'>
       <Grid
         container
-        spacing={3}
-        columns={{ xd:1, sm: 2, md: 3 }}
+        spacing={5}
+        columns={{ xd:1, sm: 2}}
         className='pt-5'
         direction="row"
-        justifyContent="center"
+        justifyContent="space-around"
         alignItems="center"
       >
 
-        <Grid item xs={1} className='m-20' sx={{ py: '12px', px: 2 }}>
+        <Grid item  >
 
           <div className="grid justify-center" >
             <CardNoButton
@@ -56,7 +56,7 @@ export default function Home() {
 
         </Grid>
 
-        <Grid item xs={1} className='m-20' sx={{ py: '12px', px: 2 }}>
+        <Grid item   >
           <div className="grid justify-center" >
             <Links />
           </div>
