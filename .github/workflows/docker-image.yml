@@ -29,7 +29,7 @@ jobs:
           push: true
           tags: nicolaboscolo/mywebsite:beta
           build-args: |
-          ANON_KEY=${{ secrets.ANON_KEY }}
+            ANON_KEY=${{ secrets.ANON_KEY }}
           
       -
         name: executing remote ssh commands using ssh key
