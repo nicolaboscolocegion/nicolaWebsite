@@ -40,13 +40,13 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
 
   const works: WorkContent[] = varWorks;
   const theme = useTheme();
-  const lessThanLG = useMediaQuery(theme.breakpoints.down("md"));
+  const lessThanMD = useMediaQuery(theme.breakpoints.down("md"));
   
 
   return (
     <>
       <Timeline
-        position={lessThanLG ? "right" : "alternate"}
+        position={lessThanMD ? "right" : "alternate"}
 
         sx={{
           [`& .${timelineItemClasses.root}:before`]: {
@@ -58,7 +58,7 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
         className='mt-20' >
         {works.map((work: WorkContent, index: number) =>
           <TimelineItem key={index}>
-            {lessThanLG ? <></> :
+            {lessThanMD ? <></> :
               <TimelineOppositeContent
                 sx={{ m: 'auto 0' }}
                 align="right"
@@ -88,7 +88,7 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
             <TimelineContent sx={{ py: '12px', px: 2 }} >
 
 
-              <div className={lessThanLG ? "grid justify-center" : (index % 2 === 0 ? " grid justify-items-start mx-20" : " grid justify-items-end mx-20")}  >
+              <div className={lessThanMD ? "grid justify-center" : (index % 2 === 0 ? " grid justify-items-start mx-20" : " grid justify-items-end mx-20")}  >
                 <Card title={work.name} description={work.description} link={work.link} image={work.image} />
 
               </div>
