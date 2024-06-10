@@ -1,3 +1,12 @@
 # My own website in NEXT.JS
 
-work in progress T=T
+My own website made by me!
+
+Using:
+
+- Supabase
+- Next.js
+- Accernity UI
+- MUI
+- Docker
+- Hosted in my own VPS
