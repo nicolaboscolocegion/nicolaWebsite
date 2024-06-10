@@ -28,7 +28,7 @@ export default async function Education() {
         alignItems="center">
 
         {education.map((edu: WorkContent, index: number) =>
-          <Grid item xs={1} key={index} className='m-20'>
+          <Grid item key={index} className='m-20'>
             <Card title={edu.name} description={edu.description} link={edu.link} image={edu.image} />
 
           </Grid>
