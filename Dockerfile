@@ -13,4 +13,6 @@ EXPOSE $PORT
 RUN npm i
 RUN npm run build
 
+ARG ANON_KEY=""
+
 CMD npm start 
