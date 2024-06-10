@@ -28,7 +28,7 @@ export default async function Jobs() {
         alignItems="center">
 
         {jobs.map((job: WorkContent, index: number) =>
-          <Grid key={index} className='m-20'>
+          <Grid item key={index} className='m-20'>
             <Card title={job.name} description={job.description} link={job.link} image={job.image} />
 
           </Grid>
