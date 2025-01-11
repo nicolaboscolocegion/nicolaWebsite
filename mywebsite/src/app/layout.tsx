@@ -23,19 +23,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark"  >
       <head>
         <link rel="canonical" href="https://www.nikbc.tech" />
         <meta name="author" content="Nicola Boscolo Cegion"/>
-
+        <meta name="color-scheme" content="dark"/>
       </head>
       <body className={inter.className}>
         <AppRouterCacheProvider >
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={theme} >
             <Newnavbar />
             <WavyBackground >
-              <div className=" inset-0 overscroll-contain z-50 ">
-
+              <div className="dark inset-0 overscroll-contain z-50 ">
+              
                 {children}
 
               </div>
