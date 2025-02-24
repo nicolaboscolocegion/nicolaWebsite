@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "api.nikbc.tech",
+        hostname: "api.nikbc.com",
       },
     ],
 

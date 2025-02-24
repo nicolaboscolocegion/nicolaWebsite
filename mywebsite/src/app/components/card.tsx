@@ -5,7 +5,7 @@ import { BackgroundGradient } from "../ui/background-gradient";
 import Image from "next/image";
 
 
-export const imgUrl = "https://api.nikbc.tech/storage/v1/object/public/images/"
+export const imgUrl = "https://api.nikbc.com/storage/v1/object/public/images/"
 
 type Props = {
   image: string;
@@ -25,7 +25,7 @@ export function Card(props: Props) {
         props.image == undefined ? <></> :
           <Image
 
-            src={`https://api.nikbc.tech/storage/v1/object/public/images/` + props.image}
+            src={`https://api.nikbc.com/storage/v1/object/public/images/` + props.image}
             alt={props.image}
             width={200}
             height={200}

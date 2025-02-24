@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.nikbc.tech/sitemap.xml
+Sitemap: https://www.nikbc.com/sitemap.xml

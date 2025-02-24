@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: "Nicola Boscolo Cegion protfolio with general information about contats, education, jobs and projecs.",
   robots: "all",
   keywords: "Developer, UNIPD, Gaming, computer engineering, videogames, C, C++, Java, Javascript, worker, portfolio, email, nicolaboscolocegion@gmail.com"
-  
+
 };
 
 export default function RootLayout({
@@ -25,9 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dark"  >
       <head>
-        <link rel="canonical" href="https://www.nikbc.tech" />
-        <meta name="author" content="Nicola Boscolo Cegion"/>
-        <meta name="color-scheme" content="dark"/>
+        <link rel="canonical" href="https://www.nikbc.com" />
+        <meta name="author" content="Nicola Boscolo Cegion" />
+        <meta name="color-scheme" content="dark" />
       </head>
       <body className={inter.className}>
         <AppRouterCacheProvider >
@@ -35,7 +35,7 @@ export default function RootLayout({
             <Newnavbar />
             <WavyBackground >
               <div className="dark inset-0 overscroll-contain z-50 ">
-              
+
                 {children}
 
               </div>
