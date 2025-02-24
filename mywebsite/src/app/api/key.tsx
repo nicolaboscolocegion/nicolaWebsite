@@ -6,5 +6,5 @@ declare var process : {
   }
 }
 export const key : string = process.env.ANON_KEY
-export const supabase =  createClient('http://api.nikbc.tech', key)
+export const supabase =  createClient('https://api.nikbc.com', key)
 export const url = process.env.URL;
