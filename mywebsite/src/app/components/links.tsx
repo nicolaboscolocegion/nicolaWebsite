@@ -18,8 +18,8 @@ export default function Links() {
       </p>
 
       <p className="text-base text-neutral-600 dark:text-neutral-400 whitespace-pre-wrap leading-8">
-        Github <a href="https://github.com/nicolaboscolocegion"> <GitHubIcon /> </a> <br />
-        Linkedin <a href="https://www.linkedin.com/in/nicola-boscolo-cegion-732769152/"> <LinkedInIcon /> </a>
+        Github <a href="https://github.com/nicolaboscolocegion" aria-label="Link to personal github"> <GitHubIcon /> </a> <br />
+        Linkedin <a href="https://www.linkedin.com/in/nicola-boscolo-cegion-732769152/" aria-label="Link to Linkedin profile"> <LinkedInIcon /> </a>
       </p>
     </BackgroundGradient>
 
