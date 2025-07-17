@@ -7,8 +7,8 @@ export enum typeOfWOrk {
 export type WorkContent = {
   id: bigint;
   name: string;
-  startingDate: string;
-  endDate: string;
+  startingDate: Date;
+  endDate: Date;
   description: string;
   link: string;
   type: typeOfWOrk;

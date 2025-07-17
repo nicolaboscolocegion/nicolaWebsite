@@ -65,16 +65,18 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
                 variant="h5"
                 color="white"
               >
+                
                 <p className='text-base text-neutral-300 	'>
                   {
-                    "Started in: " + moment(work.startingDate, 'YYYY-MM-DD').format("MM") + "/" + moment(work.startingDate, 'YYYY-MM-DD').format("YYYY")
+                    "Started in: " + moment(work.startingDate, 'YYYY-MM-DD').format("DD/MM/YYYY")
                   }
                   <br />
                   {
                     work.endDate != undefined ?
-                      "Ended in: " + moment(work.endDate, 'YYYY-MM-DD').format("MM") + "/" + moment(work.endDate, 'YYYY-MM-DD').format("YYYY") :
+                      "Ended in: " + moment(work.endDate, 'YYYY-MM-DD').format("DD/MM/YYYY") :
                       "Still in progress"
                   }
+            
                 </p>
               </TimelineOppositeContent>
             }
@@ -89,7 +91,7 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
 
 
               <div className={lessThanMD ? "grid justify-center" : (index % 2 === 0 ? " grid justify-items-start mx-20" : " grid justify-items-end mx-20")}  >
-                <Card title={work.name} description={work.description} link={work.link} image={work.image} />
+                <Card title={work.name} description={work.description} link={work.link} image={work.image} startingDate={lessThanMD? work.startingDate : undefined} endDate={work.endDate}/>
 
               </div>
             </TimelineContent>
