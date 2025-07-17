@@ -32,7 +32,7 @@ export default async function TimelinePage() {
   }).then(response => response.json());
   const projects: WorkContent[] = projectRetrived.map((retrived: WorkContent) => ({ ...retrived, type: typeOfWOrk.project }))
 
-  const works: WorkContent[] = Array.prototype.concat(edu, jobs, projects).sort((a, b) => (a.startingDate > b.startingDate) ? 1 : ((b.startingDate > a.startingDate) ? -1 : 0));
+  const works: WorkContent[] = Array.prototype.concat(edu, jobs, projects).sort((a, b) => (a.startingDate < b.startingDate) ? 1 : ((b.startingDate < a.startingDate) ? -1 : 0));
 
   return <CustomizedTimeline varWorks={works} />
 }
