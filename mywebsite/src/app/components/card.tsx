@@ -3,6 +3,9 @@ export const revalidate = 10;
 import React from "react";
 import { BackgroundGradient } from "../ui/background-gradient";
 import Image from "next/image";
+import moment from 'moment';
+import { Grid } from "@mui/material";
+
 
 
 export const imgUrl = "https://api.nikbc.com/storage/v1/object/public/images/"
@@ -12,15 +15,19 @@ type Props = {
   title: string;
   description: string;
   link: string;
-
+  startingDate?: Date
+  endDate?: Date;
 }
 
 
 export function Card(props: Props) {
 
+  const dateField = props.startingDate == undefined ? "" : "Started: " + moment(props.startingDate, 'YYYY-MM-DD').format("DD/MM/YYYY") + "\n" +
+    (props.endDate != undefined ? "Ended: " + moment(props.endDate, 'YYYY-MM-DD').format("DD/MM/YYYY") : "Still in progress");
+  
   return (
 
-    <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
+    <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 text-left">
       {
         props.image == undefined ? <></> :
           <Image
@@ -40,21 +47,39 @@ export function Card(props: Props) {
         {props.title}
       </p>
 
-      <p className="text-base text-neutral-600 dark:text-neutral-400">
+      <p className="text-base text-neutral-600 dark:text-neutral-400 ">
         {props.description}
       </p>
 
-      <div className="pt-5">
-        <a href={"https://" + props.link}>
-          <button className="p-[3px] relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
-            <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
-              LINK
-            </div>
 
-          </button>
-        </a>
-      </div>
+      <Grid
+
+        container
+        spacing={5}
+        columns={{ sm: 2 }}
+        className='pt-5'
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Grid item >
+          <p className="text-base text-neutral-600 dark:text-neutral-400 whitespace-pre-line">
+            {dateField}
+          </p>
+        </Grid>
+        <Grid item>
+          <a href={"https://" + props.link}>
+            <button className="p-[3px] relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+              <div className="px-6 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+                LINK
+              </div>
+
+            </button>
+          </a>
+        </Grid>
+      </Grid>
+
     </BackgroundGradient>
 
   );
