@@ -27,7 +27,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: nicolaboscolo/mywebsite:1.0
+          tags: |
+            nicolaboscolo/mywebsite:1.0
+            nicolaboscolo/mywebsite:latest
           build-args: |
             ANON_KEY=${{ secrets.ANON_KEY }}
           
