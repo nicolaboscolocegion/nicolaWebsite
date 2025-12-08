@@ -29,7 +29,7 @@ export default async function Projects() {
         alignItems="center">
 
         {projects.map((project: WorkContent, index: number) =>
-          <Grid item key={index} className='m-20'>
+          <Grid key={index} className='m-20'>
             <Card title={project.name} description={project.description} link={project.link} image={project.image} startingDate={project.startingDate} endDate={project.endDate}/>
 
           </Grid>

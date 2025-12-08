@@ -37,14 +37,14 @@ export default function Home() {
       <Grid
         container
         spacing={5}
-        columns={{ xd:1, sm: 2}}
+        columns={{ xs:1, sm: 2}}
         className='pt-5'
         direction="row"
         justifyContent="space-around"
         alignItems="center"
       >
 
-        <Grid item  >
+        <Grid  >
 
           <div className="grid justify-center" >
             <CardNoButton
@@ -56,7 +56,7 @@ export default function Home() {
 
         </Grid>
 
-        <Grid item   >
+        <Grid    >
           <div className="grid justify-center" >
             <Links />
           </div>
