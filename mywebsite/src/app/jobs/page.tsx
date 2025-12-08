@@ -17,18 +17,19 @@ export default async function Jobs() {
       'Authorization': `Bearer ${key}`
     },
   }).then(response => response.json());
+  jobs.sort((a, b) => (a.startingDate < b.startingDate) ? 1 : ((b.startingDate < a.startingDate) ? -1 : 0));
 
 
   return (
     <Box sx={{ width: '100%' }} className='pt-20 px-10'>
-      <Grid container spacing={5} columns={{ sm: 2, md: 3, lg: 4, xl: 5 }}
+      <Grid container spacing={5} columns={{ sm: 1, md: 3, lg: 4, xl: 5 }}
         className='pt-5'
         direction="row"
         justifyContent="center"
         alignItems="center">
 
         {jobs.map((job: WorkContent, index: number) =>
-          <Grid key={index} className='m-20'>
+          <Grid key={index} >
             <Card title={job.name} description={job.description} link={job.link} image={job.image} startingDate={job.startingDate} endDate={job.endDate}/>
 
           </Grid>

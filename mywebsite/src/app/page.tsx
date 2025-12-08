@@ -27,7 +27,7 @@ const description: string = `Nationality: Italian
 Born in: Chioggia (VE)
 Birth: 26/11/1999
 Age: ${getAge()}
-Email: nicolaboscolocegion@gmail.com 
+Email: nicolaboscolo@proton.me 
 `
 
 
@@ -40,7 +40,7 @@ export default function Home() {
         columns={{ xs:1, sm: 2}}
         className='pt-5'
         direction="row"
-        justifyContent="space-around"
+        justifyContent="space-evenly"
         alignItems="center"
       >
 

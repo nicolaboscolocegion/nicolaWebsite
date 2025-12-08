@@ -19,6 +19,7 @@ export default async function Projects() {
       'Authorization': `Bearer ${key}`
     },
   }).then(response => response.json());
+  projects.sort((a, b) => (a.startingDate < b.startingDate) ? 1 : ((b.startingDate < a.startingDate) ? -1 : 0));
 
   return (
     <Box sx={{ width: '100%' }} className='pt-20 px-10'>
@@ -29,7 +30,7 @@ export default async function Projects() {
         alignItems="center">
 
         {projects.map((project: WorkContent, index: number) =>
-          <Grid key={index} className='m-20'>
+          <Grid key={index} >
             <Card title={project.name} description={project.description} link={project.link} image={project.image} startingDate={project.startingDate} endDate={project.endDate}/>
 
           </Grid>
