@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, Transition } from "framer-motion";
 
-const transition = {
-  type: "spring",
+
+const transition: Transition = {
+  type: "spring", // ora TS sa che è uno dei tipi validi
   mass: 0.5,
   damping: 11.5,
   stiffness: 100,

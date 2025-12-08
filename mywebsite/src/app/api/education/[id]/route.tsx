@@ -1,27 +1,26 @@
 "use server";
 
 import { NextRequest, NextResponse } from 'next/server';
-import {supabase} from '../../key'
+import { supabase } from '../../key';
 
-export async function GET(req: NextRequest, { params }: { params: { id: bigint } }) {
+export async function GET(
+  req: NextRequest,
+  context: { params: Promise<{ id: string }> }  // params è Promise<...>
+) {
+  const { id } = await context.params;  // devi fare await
+  const idBigInt = BigInt(id);
 
-  
-
-  //res.status(200).json({ message: 'Hello from Next.js!' })
   try {
-    // Fetch data from Supabase
     const { data: education, error } = await supabase
       .from('education')
-      .select('*') // Or select specific columns
-      .eq('id', params.id)
-    if (error) {
-      throw error;
-    }
+      .select('*')
+      .eq('id', idBigInt);
+
+    if (error) throw error;
 
     return NextResponse.json(education, { status: 200 });
-  } catch (error) {
+  } catch (err) {
+    console.error(err);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
-
 }
-
