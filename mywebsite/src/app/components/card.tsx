@@ -62,12 +62,12 @@ export function Card(props: Props) {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Grid item >
+        <Grid >
           <p className="text-base text-neutral-600 dark:text-neutral-400 whitespace-pre-line">
             {dateField}
           </p>
         </Grid>
-        <Grid item>
+        <Grid>
           <a href={"https://" + props.link}>
             <button className="p-[3px] relative">
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />

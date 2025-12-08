@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Nicola Boscolo Cegion portfolio",
   description: "Nicola Boscolo Cegion protfolio with general information about contats, education, jobs and projecs.",
   robots: "all",
-  keywords: "Developer, UNIPD, Gaming, computer engineering, videogames, C, C++, Java, Javascript, worker, portfolio, email, nicolaboscolocegion@gmail.com"
+  keywords: "Developer, UNIPD, Gaming, computer engineering, videogames, C, C++, Java, Javascript, worker, portfolio, email, nicolaboscolo@proton.me"
 
 };
 
