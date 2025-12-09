@@ -25,7 +25,7 @@ function getAge() {
 
 const description: string = `Nationality: Italian
 Born in: Chioggia (VE)
-Birth: 26/11/1999
+Birth date: 26/11/1999
 Age: ${getAge()}
 Email: nicolaboscolo@proton.me 
 `
