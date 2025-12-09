@@ -42,7 +42,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            cd website 
-            docker compose pull
-            docker compose up -d --remove-orphans
-            docker image prune   
+            cd website
+            > deploy.log
+            nohup docker compose pull && \
+            docker compose up -d --remove-orphans >> deploy.log 2>&1 &
