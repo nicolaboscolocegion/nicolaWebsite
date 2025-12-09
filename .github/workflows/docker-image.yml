@@ -42,7 +42,8 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            cd website
-            > deploy.log
-            nohup docker compose pull && \
-            docker compose up -d --remove-orphans >> deploy.log 2>&1 &
+              cd website
+              screen -S deploy -X quit || true
+              : > deploy.log
+              screen -dmS deploy bash -c "docker compose pull && docker compose up -d --remove-orphans >> deploy.log 2>&1"
+              exit
