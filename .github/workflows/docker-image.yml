@@ -20,22 +20,24 @@ jobs:
           echo "tag=$TAG" >> $GITHUB_OUTPUT
       -
         name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
       -
         name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
       -
         name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
       -
         name: Build and push
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           push: true
-          tags: nicolaboscolo/mywebsite:${{steps.tag.outputs.tag }}
+          tags: |
+            nicolaboscolo/mywebsite:${{steps.tag.outputs.tag }}
+            nicolaboscolo/mywebsite:latest
           build-args: |
             ANON_KEY=${{ secrets.ANON_KEY }}
           
@@ -48,7 +50,8 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            cd website 
-            docker compose pull
-            docker compose up -d --remove-orphans
-            docker image prune   
+              cd website
+              screen -S deploy -X quit || true
+              : > deploy.log
+              screen -dmS deploy bash -c "docker compose pull && docker compose up -d --remove-orphans >> deploy.log 2>&1"
+              exit
