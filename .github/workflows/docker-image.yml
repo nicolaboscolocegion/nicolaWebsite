@@ -11,15 +11,19 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - 
-        name: Get latest git tag
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # necessario per avere tutti i tag
+    
+      - name: Get latest tag
         id: tag
         run: |
           git fetch --tags
           TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "tag=$TAG" >> $GITHUB_OUTPUT
-      -
-        name: Set up QEMU
+            
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       -
         name: Set up Docker Buildx
