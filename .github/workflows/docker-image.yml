@@ -7,9 +7,17 @@ on:
       - master 
 
 jobs:
+  
   docker:
     runs-on: ubuntu-latest
     steps:
+      - 
+        name: Get latest git tag
+        id: tag
+        run: |
+          git fetch --tags
+          TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -28,7 +36,7 @@ jobs:
         with:
           push: true
           tags: |
-            nicolaboscolo/mywebsite:1.1
+            nicolaboscolo/mywebsite:${{steps.tag.outputs.tag }}
             nicolaboscolo/mywebsite:latest
           build-args: |
             ANON_KEY=${{ secrets.ANON_KEY }}

@@ -1,24 +1,13 @@
 "use server";
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { WorkContent } from '../custom';
 import { Card } from '../components/card';
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
-import { key } from '../api/key';
-
+import { fetchPocketBaseCollectionWithImages } from '../lib/pocketbase';
 
 export default async function Projects() {
 
-  const projects: WorkContent[] = await fetch('https://api.nikbc.com/rest/v1/projects?select=*', {
-    next: { revalidate: 3600 },
-    headers: {
-      'apikey': key,
-      'Authorization': `Bearer ${key}`
-    },
-  }).then(response => response.json());
+  const projects: WorkContent[] = await fetchPocketBaseCollectionWithImages<WorkContent>('projects');
   projects.sort((a, b) => (a.startingDate < b.startingDate) ? 1 : ((b.startingDate < a.startingDate) ? -1 : 0));
 
   return (
@@ -31,7 +20,7 @@ export default async function Projects() {
 
         {projects.map((project: WorkContent, index: number) =>
           <Grid key={index} >
-            <Card title={project.name} description={project.description} link={project.link} image={project.image} startingDate={project.startingDate} endDate={project.endDate}/>
+            <Card title={project.name} description={project.description} link={project.link} imageFile={project.imageID} startingDate={project.startingDate} endDate={project.endDate} />
 
           </Grid>
 

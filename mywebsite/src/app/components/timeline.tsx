@@ -20,7 +20,10 @@ import { timelineItemClasses } from '@mui/lab/TimelineItem';
 
 import { WorkContent, typeOfWOrk } from '../custom';
 
-
+const formatDate = (date?: Date | null) => {
+  const parsed = moment(date);
+  return parsed.isValid() ? parsed.format("DD/MM/YYYY") : null;
+};
 
 function icon(type: typeOfWOrk) {
   switch (type) {
@@ -41,7 +44,7 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
   const works: WorkContent[] = varWorks;
   const theme = useTheme();
   const lessThanMD = useMediaQuery(theme.breakpoints.down("md"));
-  
+
 
   return (
     <>
@@ -65,18 +68,20 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
                 variant="h5"
                 color="white"
               >
-                
+
                 <p className='text-base text-neutral-300 	'>
                   {
-                    "Started in: " + moment(work.startingDate, 'YYYY-MM-DD').format("DD/MM/YYYY")
+                    moment(work.startingDate).isValid()
+                      ? "Started in: " + formatDate(work.startingDate)
+                      : ""
                   }
                   <br />
                   {
-                    work.endDate != undefined ?
-                      "Ended in: " + moment(work.endDate, 'YYYY-MM-DD').format("DD/MM/YYYY") :
-                      "Still in progress"
+                    moment(work.endDate).isValid()
+                      ? "Ended in: " + formatDate(work.endDate)
+                      : "Still in progress"
                   }
-            
+
                 </p>
               </TimelineOppositeContent>
             }
@@ -91,7 +96,7 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
 
 
               <div className={lessThanMD ? "grid justify-center" : (index % 2 === 0 ? " grid justify-items-start mx-20" : " grid justify-items-end mx-20")}  >
-                <Card title={work.name} description={work.description} link={work.link} image={work.image} startingDate={lessThanMD? work.startingDate : undefined} endDate={work.endDate}/>
+                <Card title={work.name} description={work.description} link={work.link} imageFile={work.imageID} startingDate={lessThanMD ? work.startingDate : undefined} endDate={work.endDate} />
 
               </div>
             </TimelineContent>

@@ -8,9 +8,13 @@ export type WorkContent = {
   id: bigint;
   name: string;
   startingDate: Date;
-  endDate: Date;
+  endDate?: Date | null;
   description: string;
   link: string;
   type: typeOfWOrk;
-  image: string
+  image?: string;
+  imageID?: {
+    id: string;
+    file: string;
+  };
 }

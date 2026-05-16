@@ -1,22 +1,13 @@
 "use server";
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { WorkContent } from '../custom';
 import { Card } from '../components/card';
-import { key } from '../api/key';
+import { fetchPocketBaseCollectionWithImages } from '../lib/pocketbase';
 
 export default async function Jobs() {
-
-  const jobs: WorkContent[] = await fetch('https://api.nikbc.com/rest/v1/jobs?select=*', {
-    next: { revalidate: 3600 },
-    headers: {
-      'apikey': key,
-      'Authorization': `Bearer ${key}`
-    },
-  }).then(response => response.json());
+  const jobs: WorkContent[] = await fetchPocketBaseCollectionWithImages<WorkContent>('jobs');
   jobs.sort((a, b) => (a.startingDate < b.startingDate) ? 1 : ((b.startingDate < a.startingDate) ? -1 : 0));
 
 
@@ -30,7 +21,7 @@ export default async function Jobs() {
 
         {jobs.map((job: WorkContent, index: number) =>
           <Grid key={index} >
-            <Card title={job.name} description={job.description} link={job.link} image={job.image} startingDate={job.startingDate} endDate={job.endDate}/>
+            <Card title={job.name} description={job.description} link={job.link} imageFile={job.imageID} startingDate={job.startingDate} endDate={job.endDate} />
 
           </Grid>
 

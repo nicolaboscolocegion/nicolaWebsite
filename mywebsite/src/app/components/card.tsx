@@ -5,39 +5,51 @@ import { BackgroundGradient } from "../ui/background-gradient";
 import Image from "next/image";
 import moment from 'moment';
 import { Grid } from "@mui/material";
+import { log } from "console";
 
 
-
-export const imgUrl = "https://api.nikbc.com/storage/v1/object/public/images/"
+type ImageFile = {
+  id: string;
+  file: string;
+};
 
 type Props = {
-  image: string;
+  imageFile?: ImageFile;
   title: string;
   description: string;
   link: string;
-  startingDate?: Date
-  endDate?: Date;
-}
-
+  startingDate?: Date | null;
+  endDate?: Date | null;
+};
 
 export function Card(props: Props) {
+  const imageUrl = props.imageFile
+    ? `${process.env.NEXT_PUBLIC_API_POCKETBASE_URL}/api/files/images/${props.imageFile.id}/${props.imageFile.file}`
+    : null;
 
-  const dateField = props.startingDate == undefined ? "" : "Started: " + moment(props.startingDate, 'YYYY-MM-DD').format("DD/MM/YYYY") + "\n" +
-    (props.endDate != undefined ? "Ended: " + moment(props.endDate, 'YYYY-MM-DD').format("DD/MM/YYYY") : "Still in progress");
-  
+  const formatDate = (date?: Date | null) => {
+    const parsed = moment(date);
+    return parsed.isValid() ? parsed.format("DD/MM/YYYY") : null;
+  };
+
+  const hasValidEndDate = props.endDate != null && moment(props.endDate).isValid();
+  const dateField = props.startingDate == null || !moment(props.startingDate).isValid()
+    ? ""
+    : "Started: " + formatDate(props.startingDate) + "\n" +
+    (hasValidEndDate ? "Ended: " + formatDate(props.endDate) : "Still in progress");
+
   return (
 
     <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 text-left">
       {
-        props.image == undefined ? <></> :
+        imageUrl == null ? <></> :
           <Image
-
-            src={`https://api.nikbc.com/storage/v1/object/public/images/` + props.image}
-            alt={props.image}
+            src={imageUrl}
+            alt={props.title}
             width={200}
             height={200}
             placeholder='empty'
-            onError={() => console.error("image not loaded: " + props.image)}
+            onError={() => console.error("image not loaded: " + imageUrl)}
             className="object-contain rounded-3xl mx-auto"
           />
 

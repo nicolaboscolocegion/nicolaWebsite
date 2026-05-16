@@ -1,23 +1,13 @@
 "use server";
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { WorkContent } from '../custom';
 import { Card } from '../components/card';
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
-import { key } from '../api/key';
+import { fetchPocketBaseCollectionWithImages } from '../lib/pocketbase';
 
 export default async function Education() {
-
-  const education: WorkContent[] = await fetch('https://api.nikbc.com/rest/v1/education?select=*', {
-    next: { revalidate: 3600 },
-    headers: {
-      'apikey': key,
-      'Authorization': `Bearer ${key}`
-    },
-  }).then(response => response.json());
+  const education: WorkContent[] = await fetchPocketBaseCollectionWithImages<WorkContent>('education');
 
   education.sort((a, b) => (a.startingDate < b.startingDate) ? 1 : ((b.startingDate < a.startingDate) ? -1 : 0));
   return (
@@ -30,7 +20,7 @@ export default async function Education() {
 
         {education.map((edu: WorkContent, index: number) =>
           <Grid key={index}>
-            <Card title={edu.name} description={edu.description} link={edu.link} image={edu.image} startingDate={edu.startingDate} endDate={edu.endDate}/>
+            <Card title={edu.name} description={edu.description} link={edu.link} imageFile={edu.imageID} startingDate={edu.startingDate} endDate={edu.endDate} />
 
           </Grid>
 
