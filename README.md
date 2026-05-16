@@ -4,7 +4,7 @@ My own website made by me!
 
 Using:
 
-- Supabase
+- PocketBase
 - Next.js
 - Accernity UI
 - MUI
