@@ -4,13 +4,10 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { WorkContent } from '../custom';
 import { Card } from '../components/card';
+import { fetchPocketBaseCollectionWithImages } from '../lib/pocketbase';
 
 export default async function Jobs() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3000';
-
-  const jobs: WorkContent[] = await fetch(`${baseUrl}/api/job`, {
-    next: { revalidate: 10 },
-  }).then(response => response.json());
+  const jobs: WorkContent[] = await fetchPocketBaseCollectionWithImages<WorkContent>('jobs');
   jobs.sort((a, b) => (a.startingDate < b.startingDate) ? 1 : ((b.startingDate < a.startingDate) ? -1 : 0));
 
 
@@ -24,7 +21,7 @@ export default async function Jobs() {
 
         {jobs.map((job: WorkContent, index: number) =>
           <Grid key={index} >
-            <Card title={job.name} description={job.description} link={job.link} imageID={job.imageID} startingDate={job.startingDate} endDate={job.endDate} />
+            <Card title={job.name} description={job.description} link={job.link} imageFile={job.imageID} startingDate={job.startingDate} endDate={job.endDate} />
 
           </Grid>
 

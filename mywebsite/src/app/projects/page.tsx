@@ -3,14 +3,11 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { WorkContent } from '../custom';
 import { Card } from '../components/card';
-
+import { fetchPocketBaseCollectionWithImages } from '../lib/pocketbase';
 
 export default async function Projects() {
 
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3000';
-  const projects: WorkContent[] = await fetch(`${baseUrl}/api/project`, {
-    next: { revalidate: 10 },
-  }).then(response => response.json());
+  const projects: WorkContent[] = await fetchPocketBaseCollectionWithImages<WorkContent>('projects');
   projects.sort((a, b) => (a.startingDate < b.startingDate) ? 1 : ((b.startingDate < a.startingDate) ? -1 : 0));
 
   return (
@@ -23,7 +20,7 @@ export default async function Projects() {
 
         {projects.map((project: WorkContent, index: number) =>
           <Grid key={index} >
-            <Card title={project.name} description={project.description} link={project.link} imageID={project.imageID} startingDate={project.startingDate} endDate={project.endDate} />
+            <Card title={project.name} description={project.description} link={project.link} imageFile={project.imageID} startingDate={project.startingDate} endDate={project.endDate} />
 
           </Grid>
 

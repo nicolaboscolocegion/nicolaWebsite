@@ -4,13 +4,10 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { WorkContent } from '../custom';
 import { Card } from '../components/card';
+import { fetchPocketBaseCollectionWithImages } from '../lib/pocketbase';
 
 export default async function Education() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3000';
-
-  const education: WorkContent[] = await fetch(`${baseUrl}/api/education`, {
-    next: { revalidate: 10 },
-  }).then(response => response.json());
+  const education: WorkContent[] = await fetchPocketBaseCollectionWithImages<WorkContent>('education');
 
   education.sort((a, b) => (a.startingDate < b.startingDate) ? 1 : ((b.startingDate < a.startingDate) ? -1 : 0));
   return (
@@ -23,7 +20,7 @@ export default async function Education() {
 
         {education.map((edu: WorkContent, index: number) =>
           <Grid key={index}>
-            <Card title={edu.name} description={edu.description} link={edu.link} imageID={edu.imageID} startingDate={edu.startingDate} endDate={edu.endDate} />
+            <Card title={edu.name} description={edu.description} link={edu.link} imageFile={edu.imageID} startingDate={edu.startingDate} endDate={edu.endDate} />
 
           </Grid>
 

@@ -7,8 +7,10 @@ import moment from 'moment';
 import { Grid } from "@mui/material";
 
 
-
-export const imgUrl = "https://api.nikbc.com/storage/v1/object/public/images/"
+type ImageFile = {
+  id: string;
+  file: string;
+};
 
 type Props = {
   image: string;
@@ -19,8 +21,10 @@ type Props = {
   endDate?: Date;
 }
 
-
 export function Card(props: Props) {
+  const imageUrl = props.imageFile
+    ? `${process.env.NEXT_PUBLIC_API_POCKETBASE_URL}/api/files/images/${props.imageFile.id}/${props.imageFile.file}`
+    : null;
 
   const dateField = props.startingDate == undefined ? "" : "Started: " + moment(props.startingDate, 'YYYY-MM-DD').format("DD/MM/YYYY") + "\n" +
     (props.endDate != undefined ? "Ended: " + moment(props.endDate, 'YYYY-MM-DD').format("DD/MM/YYYY") : "Still in progress");

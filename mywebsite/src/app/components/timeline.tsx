@@ -91,7 +91,7 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
 
 
               <div className={lessThanMD ? "grid justify-center" : (index % 2 === 0 ? " grid justify-items-start mx-20" : " grid justify-items-end mx-20")}  >
-                <Card title={work.name} description={work.description} link={work.link} imageID={work.imageID} startingDate={lessThanMD ? work.startingDate : undefined} endDate={work.endDate} />
+                <Card title={work.name} description={work.description} link={work.link} imageFile={work.imageID} startingDate={lessThanMD ? work.startingDate : undefined} endDate={work.endDate} />
 
               </div>
             </TimelineContent>
