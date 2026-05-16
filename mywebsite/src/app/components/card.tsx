@@ -5,6 +5,7 @@ import { BackgroundGradient } from "../ui/background-gradient";
 import Image from "next/image";
 import moment from 'moment';
 import { Grid } from "@mui/material";
+import { log } from "console";
 
 
 type ImageFile = {
@@ -17,8 +18,8 @@ type Props = {
   title: string;
   description: string;
   link: string;
-  startingDate?: Date;
-  endDate?: Date;
+  startingDate?: Date | null;
+  endDate?: Date | null;
 };
 
 export function Card(props: Props) {
@@ -26,8 +27,16 @@ export function Card(props: Props) {
     ? `${process.env.NEXT_PUBLIC_API_POCKETBASE_URL}/api/files/images/${props.imageFile.id}/${props.imageFile.file}`
     : null;
 
-  const dateField = props.startingDate == undefined ? "" : "Started: " + moment(props.startingDate, 'YYYY-MM-DD').format("DD/MM/YYYY") + "\n" +
-    (props.endDate != undefined ? "Ended: " + moment(props.endDate, 'YYYY-MM-DD').format("DD/MM/YYYY") : "Still in progress");
+  const formatDate = (date?: Date | null) => {
+    const parsed = moment(date);
+    return parsed.isValid() ? parsed.format("DD/MM/YYYY") : null;
+  };
+
+  const hasValidEndDate = props.endDate != null && moment(props.endDate).isValid();
+  const dateField = props.startingDate == null || !moment(props.startingDate).isValid()
+    ? ""
+    : "Started: " + formatDate(props.startingDate) + "\n" +
+    (hasValidEndDate ? "Ended: " + formatDate(props.endDate) : "Still in progress");
 
   return (
 

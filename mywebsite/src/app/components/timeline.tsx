@@ -20,7 +20,10 @@ import { timelineItemClasses } from '@mui/lab/TimelineItem';
 
 import { WorkContent, typeOfWOrk } from '../custom';
 
-
+const formatDate = (date?: Date | null) => {
+  const parsed = moment(date);
+  return parsed.isValid() ? parsed.format("DD/MM/YYYY") : null;
+};
 
 function icon(type: typeOfWOrk) {
   switch (type) {
@@ -68,13 +71,15 @@ export default function CustomizedTimeline({ varWorks }: { varWorks: WorkContent
 
                 <p className='text-base text-neutral-300 	'>
                   {
-                    "Started in: " + moment(work.startingDate, 'YYYY-MM-DD').format("DD/MM/YYYY")
+                    moment(work.startingDate).isValid()
+                      ? "Started in: " + formatDate(work.startingDate)
+                      : ""
                   }
                   <br />
                   {
-                    work.endDate != undefined ?
-                      "Ended in: " + moment(work.endDate, 'YYYY-MM-DD').format("DD/MM/YYYY") :
-                      "Still in progress"
+                    moment(work.endDate).isValid()
+                      ? "Ended in: " + formatDate(work.endDate)
+                      : "Still in progress"
                   }
 
                 </p>
