@@ -13,13 +13,13 @@ type ImageFile = {
 };
 
 type Props = {
-  image: string;
+  imageFile?: ImageFile;
   title: string;
   description: string;
   link: string;
-  startingDate?: Date
+  startingDate?: Date;
   endDate?: Date;
-}
+};
 
 export function Card(props: Props) {
   const imageUrl = props.imageFile
@@ -28,20 +28,19 @@ export function Card(props: Props) {
 
   const dateField = props.startingDate == undefined ? "" : "Started: " + moment(props.startingDate, 'YYYY-MM-DD').format("DD/MM/YYYY") + "\n" +
     (props.endDate != undefined ? "Ended: " + moment(props.endDate, 'YYYY-MM-DD').format("DD/MM/YYYY") : "Still in progress");
-  
+
   return (
 
     <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 text-left">
       {
-        props.image == undefined ? <></> :
+        imageUrl == null ? <></> :
           <Image
-
-            src={`https://api.nikbc.com/storage/v1/object/public/images/` + props.image}
-            alt={props.image}
+            src={imageUrl}
+            alt={props.title}
             width={200}
             height={200}
             placeholder='empty'
-            onError={() => console.error("image not loaded: " + props.image)}
+            onError={() => console.error("image not loaded: " + imageUrl)}
             className="object-contain rounded-3xl mx-auto"
           />
 

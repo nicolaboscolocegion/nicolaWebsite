@@ -12,5 +12,9 @@ export type WorkContent = {
   description: string;
   link: string;
   type: typeOfWOrk;
-  image: string
+  image?: string;
+  imageID?: {
+    id: string;
+    file: string;
+  };
 }
