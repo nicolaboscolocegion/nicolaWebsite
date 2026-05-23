@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - master 
 
 jobs:
   
@@ -14,8 +13,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # necessario per avere tutti i tag
-    
+          fetch-depth: 0
+
       - name: Get latest tag
         id: tag
         run: |
@@ -36,18 +35,18 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       -
         name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           tags: |
-            nicolaboscolo/mywebsite:${{steps.tag.outputs.tag }}
+            nicolaboscolo/mywebsite:${{ steps.tag.outputs.tag }}
             nicolaboscolo/mywebsite:latest
           build-args: |
             ANON_KEY=${{ secrets.ANON_KEY }}
           
       -
         name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
